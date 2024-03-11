@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Navbar from './Navbar'
 import Welcome from './Welcome'
 import Home from './Home'
@@ -8,6 +8,8 @@ const Main = () => {
   const [movies, setMovies] = useState([])
   const [menu, setMenu] = useState("")
   const [search, setSearch] = useState(false)
+
+  const searchRef = useRef(null)
 
   const getMovies = async () => {
     try {
@@ -29,14 +31,14 @@ const Main = () => {
     <div className='bg-black'>
       <div className='flex  h-full w-full'>
         <div className='w-1/12'>
-          <Navbar  setMenu = {setMenu} setSearch = {setSearch} search = {search}/>
+          <Navbar  setMenu = {setMenu} setSearch = {setSearch} search = {search} searchRef = {searchRef}/>
         </div>
-        <div className='w-11/12'>
-          <Welcome movies={movies[2]} />
-        </div>
+      { !search &&  <div className='w-11/12'>
+          <Welcome movies={movies[2]} /> 
+        </div>}
       </div>
       <div>
-        <Home movies={movies}/>
+        <Home search = {search} movies={movies} searchRef = {searchRef}/>
       </div>
 
     </div>
