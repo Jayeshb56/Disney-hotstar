@@ -1,5 +1,6 @@
 import React from 'react'
 import john from '../Image/john.jpg'
+import ViewTrailer from './ViewTrailer'
 
 interface movieProps {
   movies : any
@@ -18,9 +19,8 @@ const Welcome = (props:movieProps) => {
             <h1 className='text-slate-300 mt-3'>{props?.movies?.release_date ?? props?.movies?.first_air_date}</h1> 
             <h1 className='text-slate-300 mt-4'>{props?.movies?.overview}</h1>
             <h1 className='text-yellow-500 font-bold text-3xl mt-8'>Language - {props?.movies?.original_language}</h1>
-            <button className='bg-gray-600 mt-10 w-80 h-12 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded'>
-                Watch Now
-            </button>
+           
+           {props.movies && <ViewTrailer  welcomeId = {props?.movies?.id}/>}
         </div>
      </div>
   )

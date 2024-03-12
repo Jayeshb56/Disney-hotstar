@@ -16,7 +16,7 @@ const Home = (props:movieProps) => {
   return (
     <div>
      {props.search &&
-      <input ref = {props.searchRef} onChange={(e) => setSearchKeys(e.target.value)} type="text"  className= "ml-28 mt-3 bg-gray-800 border border-gray-800 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-10/12 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-800 dark:focus:border-gray-800 outline-none"
+      <input ref = {props.searchRef} onChange={(e) => setSearchKeys(e.target.value)} type="text"  className= "ml-28 mt-3 h-16 bg-gray-800 border border-gray-800 text-white text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-10/12 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-800 dark:focus:border-gray-800 outline-none"
        placeholder="Movies, Shows and More" required />}
     <h1 className='mt-5 text-slate-300 pl-28 font-bold text-xl '>Latest Release</h1>
     <div className='grid grid-cols-6 pl-24 pt-7'>

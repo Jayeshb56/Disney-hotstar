@@ -4,8 +4,13 @@ import 'react-phone-input-2/lib/style.css'
 import signin from '../Image/signin.jpg'
 import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth'
 import {auth} from '../firebase/setup'
+import { useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const Signin = () => {
+
+    const navigate = useNavigate()
 
     const [phone, setPhone] = useState("")
     const [user,setUser] = useState<any>(null)
@@ -24,8 +29,9 @@ const Signin = () => {
 
     const verifyOtp = async() => {
         try {
-           const data = await user.confirm(otp)
-           console.log(data)
+            await user.confirm(otp)
+            auth.currentUser && toast.success("Signedin Successfully")
+           navigate("/")
         } catch (err) {
             console.error(err)
         }
@@ -58,7 +64,7 @@ const Signin = () => {
                   { otp &&<button onClick={verifyOtp} className="mt-10 h-12 bg-blue-700 w-72  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Verify Otp 
                 </button>}
-               {otp && <h3 className='text-slate-500 ml-3 mt-3'>Enter code number and<span className='text-blue-500'> click Get Otp</span> </h3>}
+               {otp && <h3 className='text-slate-500 ml-3 mt-3'>Enter code number and<span className='text-blue-500'> click Send Otp</span> </h3>}
             </div>
         </div>
     )

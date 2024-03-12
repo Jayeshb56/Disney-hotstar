@@ -34,7 +34,7 @@ const Main = () => {
           <Navbar  setMenu = {setMenu} setSearch = {setSearch} search = {search} searchRef = {searchRef}/>
         </div>
       { !search &&  <div className='w-11/12'>
-          <Welcome movies={movies[2]} /> 
+          <Welcome movies={movies[0]} /> 
         </div>}
       </div>
       <div>
